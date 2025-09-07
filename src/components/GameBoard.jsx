@@ -1,28 +1,12 @@
-const startingStateOfBoard = [
-    [null,null,null],
-    [null,null,null],
-    [null,null,null]
-]
-
-export default function GameBoard(){
-    console.log("Game board rendedered")
-    
-
-    function handleButtonClick(rowIdx, colIdx){
-        console.log("executing function")
-        startingStateOfBoard[rowIdx][colIdx] = "X";
-
-        console.log(startingStateOfBoard);
-    }
-
+export default function GameBoard({currentBoardState, handleButtonClick}){
     return (
         <ol id="game-board">
-            {startingStateOfBoard.map((row, rowIndex)=>(
+            {currentBoardState.map((row, rowIndex)=>(
                 <li key={rowIndex}>
                     <ol>
                         {row.map((currentCellValue, colIndex)=>(
                             <li key={colIndex}>
-                                <button onClick={()=>handleButtonClick(rowIndex, colIndex)}>{currentCellValue}</button>
+                                <button disabled={currentCellValue!=null} onClick={()=>handleButtonClick(rowIndex, colIndex)}>{currentCellValue}</button>
                             </li>
                         ))}
                     </ol>

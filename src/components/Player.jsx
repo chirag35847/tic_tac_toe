@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Player({playerName, playerSymbol}){
+export default function Player({playerName, playerSymbol, handlePlayerNameChange}){
     const [currentPlayerName, setCurrentPlayerName] = useState(playerName);
     const [isEditing, setIsEditing] = useState(false);
 
@@ -11,6 +11,7 @@ export default function Player({playerName, playerSymbol}){
 
     function handleOnChangeTextField(event) {
         setCurrentPlayerName(event.target.value)
+        handlePlayerNameChange(playerSymbol, event.target.value);
     }
 
     let editablePlayerName = <span className="player-name">{currentPlayerName}</span>
